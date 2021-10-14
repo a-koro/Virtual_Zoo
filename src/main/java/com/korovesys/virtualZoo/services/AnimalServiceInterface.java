@@ -1,5 +1,6 @@
 package com.korovesys.virtualZoo.services;
 
+import com.korovesys.virtualZoo.dtos.TrickDto;
 import com.korovesys.virtualZoo.entities.Animal;
 import com.korovesys.virtualZoo.projections.AnimalProjection;
 
@@ -13,4 +14,8 @@ public interface AnimalServiceInterface {
     public Animal findAnimalById(UUID id);
 
     public List<AnimalProjection> getAllAnimalsToProjection();
+
+    public TrickDto doRandomTrick(Animal animal);
+
+    public Animal learnTrick(Animal animal);
 }
