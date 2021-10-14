@@ -1,5 +1,6 @@
 package com.korovesys.virtualZoo.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
@@ -27,4 +28,7 @@ public class Species implements Serializable {
             inverseJoinColumns = { @JoinColumn(name = "trick_id")}
     )
     private List<Trick> tricks;
+    @OneToMany(mappedBy = "species", fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Animal> animals;
 }

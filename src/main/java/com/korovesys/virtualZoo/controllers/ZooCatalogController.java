@@ -1,7 +1,9 @@
 package com.korovesys.virtualZoo.controllers;
 
 import com.korovesys.virtualZoo.entities.Animal;
+import com.korovesys.virtualZoo.entities.Species;
 import com.korovesys.virtualZoo.projections.AnimalProjection;
+import com.korovesys.virtualZoo.projections.SpeciesProjection;
 import com.korovesys.virtualZoo.services.AnimalServiceImpl;
 import com.korovesys.virtualZoo.services.SpeciesServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +30,10 @@ public class ZooCatalogController {
     @GetMapping("/all")
     public List<AnimalProjection> getAllAnimalsToProjections() {
         return animalService.getAllAnimalsToProjection();
+    }
+
+    @GetMapping("/species")
+    public List<SpeciesProjection> getAllSpecies() {
+        return speciesService.getAllSpecies();
     }
 }

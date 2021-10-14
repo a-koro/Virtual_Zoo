@@ -1,5 +1,6 @@
 package com.korovesys.virtualZoo.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -26,6 +27,7 @@ public class Animal implements Serializable {
     private String name;
     @ManyToOne
     @JoinColumn(name = "species_id")
+    @JsonBackReference
     private Species species;
     @ManyToMany
     @JoinTable(
