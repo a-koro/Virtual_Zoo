@@ -2,14 +2,19 @@ package com.korovesys.virtualZoo.entities;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Getter
 @Setter
+@ToString
 @Entity
 public class Animal implements Serializable {
 
@@ -22,4 +27,17 @@ public class Animal implements Serializable {
     @ManyToOne
     @JoinColumn(name = "species_id")
     private Species species;
+    @ManyToMany
+    @JoinTable(
+            name = "animal_trick",
+            joinColumns = { @JoinColumn(name = "animal_id")},
+            inverseJoinColumns = { @JoinColumn(name = "trick_id")}
+    )
+    private List<Trick> tricks;
+
+    public String doTrick() {
+        Collections.shuffle(tricks);
+        Optional<Trick> trick = tricks.stream().findAny();
+        return trick.isPresent() ? trick.get().getName() : "None";
+    }
 }

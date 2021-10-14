@@ -4,11 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -22,4 +20,11 @@ public class Species implements Serializable {
     @Column(name = "species_id")
     private UUID id;
     private String name;
+    @ManyToMany
+    @JoinTable(
+            name = "species_trick",
+            joinColumns = { @JoinColumn(name = "species_id")},
+            inverseJoinColumns = { @JoinColumn(name = "trick_id")}
+    )
+    private List<Trick> tricks;
 }
