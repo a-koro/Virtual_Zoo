@@ -1,7 +1,6 @@
 package com.korovesys.virtualZoo.controllers;
 
 import com.korovesys.virtualZoo.entities.Animal;
-import com.korovesys.virtualZoo.entities.Species;
 import com.korovesys.virtualZoo.projections.AnimalProjection;
 import com.korovesys.virtualZoo.projections.SpeciesProjection;
 import com.korovesys.virtualZoo.services.AnimalServiceImpl;
